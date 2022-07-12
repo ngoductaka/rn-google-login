@@ -54,6 +54,21 @@ function GoogleSignIn() {
     />
   );
 }
+function GGOut() {
+  return (
+    <Button
+      title="Google Logout"
+      style={{marginTop: 10}}
+      onPress={() => {
+        try {
+          GoogleSignin.signOut();
+        } catch (error) {
+          console.error(error);
+        }
+      }}
+    />
+  );
+}
 
 
 const App: () => Node = () => {
@@ -67,6 +82,7 @@ const App: () => Node = () => {
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <GoogleSignIn />
+      <GGOut />
     </SafeAreaView>
   );
 };

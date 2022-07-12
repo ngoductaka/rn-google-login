@@ -3884,6 +3884,11 @@ istanbul-reports@^3.0.2:
     html-escaper "^2.0.0"
     istanbul-lib-report "^3.0.0"
 
+itypeof@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/itypeof/-/itypeof-1.1.2.tgz#6fb22639dc78a414f594b3d553a5f2c2488fd022"
+  integrity sha512-0pXIEOZ714awM6udUr2XVH7WRv+BC6qTBp9dsFXTgsakAtpkjn36eaBmgxBDFvgYDVJDzNpfaQKpc4faOcog5Q==
+
 jest-changed-files@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-changed-files/-/jest-changed-files-26.6.2.tgz#f6198479e1cc66f22f9ae1e22acaa0b429c042d0"
@@ -5604,6 +5609,13 @@ react-native-codegen@^0.69.1:
     flow-parser "^0.121.0"
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
+
+react-native-facebook-login@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/react-native-facebook-login/-/react-native-facebook-login-1.6.2.tgz#a2454b98e6384caaa4fbf062b181f6139ee7da58"
+  integrity sha512-XDB50QJXZF8rDJZ41wZiQvCaPSTWSjbeSsI5ymJa4T8VjsYf6MTUSSNo5j8qarQCGZcwPGBHYaWQ0Lw+IS9TwQ==
+  dependencies:
+    itypeof "^1.1.2"
 
 react-native-gradle-plugin@^0.0.7:
   version "0.0.7"
