@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">dndGoogleLoginrnDemo</string>
+    <string name="facebook_app_id">782428479834733</string>
+    <string name="facebook_client_token">db42652c8d05f32f7395669599170702</string>
 </resources>

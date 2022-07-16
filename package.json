@@ -15,7 +15,7 @@
     "@react-native-google-signin/google-signin": "^8.0.0",
     "react": "18.0.0",
     "react-native": "0.69.1",
-    "react-native-facebook-login": "^1.6.2"
+    "react-native-fbsdk-next": "^10.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

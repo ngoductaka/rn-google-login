@@ -29,10 +29,38 @@ import {
 
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
+
+import { LoginManager, LoginButton, AccessToken } from 'react-native-fbsdk-next';
 GoogleSignin.configure({
   webClientId:
     '346756952364-r6u9eq4jt479shn8re3812l4vqgce04b.apps.googleusercontent.com',
 });
+
+// fb
+
+
+async function onFacebookButtonPress() {
+  // Attempt login with permissions
+  const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
+
+  if (result.isCancelled) {
+    throw 'User cancelled the login process';
+  }
+
+  // Once signed in, get the users AccesToken
+  const data = await AccessToken.getCurrentAccessToken();
+
+  if (!data) {
+    throw 'Something went wrong obtaining access token';
+  }
+
+  // Create a Firebase credential with the AccessToken
+  const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
+
+  // Sign-in the user with the credential
+  return auth().signInWithCredential(facebookCredential);
+}
+
 async function onGoogleButtonPress() {
   // Get the users ID token
   const { idToken } = await GoogleSignin.signIn();
@@ -58,7 +86,7 @@ function GGOut() {
   return (
     <Button
       title="Google Logout"
-      style={{marginTop: 10}}
+      style={{ marginTop: 10 }}
       onPress={() => {
         try {
           GoogleSignin.signOut();
@@ -83,6 +111,38 @@ const App: () => Node = () => {
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <GoogleSignIn />
       <GGOut />
+
+      <Button
+        title="Facebook Sign-In"
+        onPress={() => onFacebookButtonPress()
+          .then((val) => console.log('Signed in with Facebook!', val))
+          .catch(err => {
+            console.log('ddd', err)
+          })
+        }
+      />
+
+      <LoginButton
+        onLoginFinished={
+          (error, result) => {
+            console.log('dasdfasdf33')
+            if (error) {
+              console.log("login has error: " + result.error);
+            } else if (result.isCancelled) {
+              console.log("login is cancelled.");
+            } else {
+              AccessToken.getCurrentAccessToken()
+                .then(
+                  (data) => {
+                    console.log(data.accessToken.toString())
+                  }
+                )
+                .catch(err => console.log('dddd', err))
+            }
+          }
+        }
+        onLogoutFinished={() => console.log("logout.")} />
+
     </SafeAreaView>
   );
 };
